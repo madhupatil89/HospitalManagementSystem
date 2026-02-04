@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⚕</span>
+                <h1>Hospital Management</h1>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-section="dashboard">Dashboard</button>
+                <button class="nav-tab" data-section="patients">Patients</button>
+                <button class="nav-tab" data-section="doctors">Doctors</button>
+                <button class="nav-tab" data-section="departments">Departments</button>
+                <button class="nav-tab" data-section="appointments">Appointments</button>
+            </nav>
+        </header>
+
+        <main class="main">
+            <!-- Dashboard -->
+            <section id="dashboard" class="section active">
+                <h2>Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-patients">-</span>
+                        <span class="stat-label">Patients</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-doctors">-</span>
+                        <span class="stat-label">Doctors</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-departments">-</span>
+                        <span class="stat-label">Departments</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-appointments">-</span>
+                        <span class="stat-label">Appointments</span>
+                    </div>
+                </div>
+                <div class="recent-box">
+                    <h3>Recent Appointments</h3>
+                    <div id="recent-appointments" class="list-placeholder">Loading...</div>
+                </div>
+            </section>
+
+            <!-- Patients -->
+            <section id="patients" class="section">
+                <div class="section-header">
+                    <h2>Patients</h2>
+                    <button class="btn btn-primary" onclick="openPatientModal()">+ Add Patient</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>DOB</th><th>Blood Group</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="patients-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Doctors -->
+            <section id="doctors" class="section">
+                <div class="section-header">
+                    <h2>Doctors</h2>
+                    <button class="btn btn-primary" onclick="openDoctorModal()">+ Add Doctor</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Specialization</th><th>Email</th><th>Phone</th><th>Department</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="doctors-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Departments -->
+            <section id="departments" class="section">
+                <div class="section-header">
+                    <h2>Departments</h2>
+                    <button class="btn btn-primary" onclick="openDepartmentModal()">+ Add Department</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Description</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="departments-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Appointments -->
+            <section id="appointments" class="section">
+                <div class="section-header">
+                    <h2>Appointments</h2>
+                    <button class="btn btn-primary" onclick="openAppointmentModal()">+ Book Appointment</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>ID</th><th>Patient</th><th>Doctor</th><th>Department</th><th>Date & Time</th><th>Status</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="appointments-table"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal</h3>
+                    <button class="btn-close" onclick="closeModal()">&times;</button>
+                </div>
+                <div id="modal-content" class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
